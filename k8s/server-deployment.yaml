@@ -17,4 +17,19 @@ spec:
         image: pachecopaulo/multi-server
         ports:
         - containerPort: 5000
+        env:
+          - name: SPRING_REDIS_HOST
+            value: redis-cluster-ip-service
+          - name: SPRING_REDIS_PORT
+            value: '6379'
+          - name: SPRING_DATASOURCE_USERNAME
+            value: postgres
+          - name: SPRING_DATASOURCE_URL
+            value: postgres-cluster-ip-service
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgpassword
+                key: PGPASSWORD
+
 

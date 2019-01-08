@@ -25,7 +25,7 @@ spec:
           - name: SPRING_DATASOURCE_USERNAME
             value: postgres
           - name: SPRING_DATASOURCE_URL
-            value: postgres-cluster-ip-service
+            value: jdbc:postgresql://postgres-cluster-ip-service/postgres
           - name: SPRING_DATASOURCE_PASSWORD
             valueFrom:
               secretKeyRef:

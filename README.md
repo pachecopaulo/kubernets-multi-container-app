@@ -7,9 +7,9 @@ PoC project intended to work with multi container deployment within Kubernets
    * Spring Boot
    * Redis DB
    * Postgres
-   * Ingress NGINX
    * Docker
-   * Gradle
+   * Kubernets
+   * NGINX Ingress Controller
 
 ## Deploying Docker containers to Kubernets 
 
@@ -19,4 +19,4 @@ PoC project intended to work with multi container deployment within Kubernets
 
 ## Updating an existing container 
 * Build and push image to registery
-* Use imperative kubernets command to update container: `kubectl set image deployment/server-deployment [deploymentName]=[image]:[tag]` Full example: `kubectl set image deployment/server-deployment server=pachecopaulo/multi-server:v1`
+* Use imperative kubernets command to update container: `kubectl set image deployment/server-deployment [deploymentName]=[image]:[tag]` *Full example*: `kubectl set image deployment/server-deployment server=pachecopaulo/multi-server:v1`

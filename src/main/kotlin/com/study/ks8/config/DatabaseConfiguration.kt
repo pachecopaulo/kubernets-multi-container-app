@@ -1,4 +1,4 @@
-package com.study.multi.docker.aws.config
+package com.study.ks8.config
 
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties
 import org.springframework.context.annotation.Bean
@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.serializer.GenericToStringSerializer
 
 @Configuration
-@ComponentScan("com.study.multi.docker.aws")
+@ComponentScan("com.study.ks8")
 @PropertySource(value = ["classpath:/config/.db.properties"], ignoreResourceNotFound = true)
 class DatabaseConfiguration {
 

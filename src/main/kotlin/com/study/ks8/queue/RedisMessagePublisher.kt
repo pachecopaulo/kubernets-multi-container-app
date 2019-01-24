@@ -1,4 +1,4 @@
-package com.study.multi.docker.aws.queue
+package com.study.ks8.queue
 
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.listener.ChannelTopic

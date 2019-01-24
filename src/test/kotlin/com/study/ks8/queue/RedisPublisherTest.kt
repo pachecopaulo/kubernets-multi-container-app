@@ -1,6 +1,6 @@
-package com.study.multi.docker.aws.queue
+package com.study.ks8.queue
 
-import com.study.multi.docker.aws.config.DatabaseConfiguration
+import com.study.ks8.config.DatabaseConfiguration
 import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith

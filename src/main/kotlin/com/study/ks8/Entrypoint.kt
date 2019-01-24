@@ -1,4 +1,4 @@
-package com.study.multi.docker.aws
+package com.study.ks8
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

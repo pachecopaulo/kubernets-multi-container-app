@@ -1,4 +1,4 @@
-package com.study.multi.docker.aws.repository
+package com.study.ks8.repository
 
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Repository

@@ -1,4 +1,4 @@
-package com.study.multi.docker.aws.entity
+package com.study.ks8.entity
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

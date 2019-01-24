@@ -1,10 +1,10 @@
-package com.study.multi.docker.aws.config
+package com.study.ks8.config
 
-import com.study.multi.docker.aws.queue.ValuesMessageSubscriber
-import com.study.multi.docker.aws.queue.MessagePublisher
-import com.study.multi.docker.aws.queue.RedisMessagePublisher
-import com.study.multi.docker.aws.repository.RedisRepository
-import com.study.multi.docker.aws.repository.ValuesRepository
+import com.study.ks8.queue.ValuesMessageSubscriber
+import com.study.ks8.queue.MessagePublisher
+import com.study.ks8.queue.RedisMessagePublisher
+import com.study.ks8.repository.RedisRepository
+import com.study.ks8.repository.ValuesRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
@@ -44,7 +44,7 @@ class SubscriberConfiguration {
 
     @Bean
     fun redisPublisher(): MessagePublisher =
-        RedisMessagePublisher(redisTemplate, topic())
+            RedisMessagePublisher(redisTemplate, topic())
 
     @Bean
     fun topic(): ChannelTopic = ChannelTopic("messageQueue")

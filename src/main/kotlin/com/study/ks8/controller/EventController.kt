@@ -1,6 +1,6 @@
-package com.study.multi.docker.aws.controller
+package com.study.ks8.controller
 
-import com.study.multi.docker.aws.service.EventService
+import com.study.ks8.service.EventService
 import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

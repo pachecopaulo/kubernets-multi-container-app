@@ -1,9 +1,9 @@
-package com.study.multi.docker.aws.queue
+package com.study.ks8.queue
 
-import com.study.multi.docker.aws.entity.Values
-import com.study.multi.docker.aws.entity.Values.Companion.generateFibBasedUntilIndex
-import com.study.multi.docker.aws.repository.RedisRepository
-import com.study.multi.docker.aws.repository.ValuesRepository
+import com.study.ks8.entity.Values
+import com.study.ks8.entity.Values.Companion.generateFibBasedUntilIndex
+import com.study.ks8.repository.RedisRepository
+import com.study.ks8.repository.ValuesRepository
 import org.springframework.data.redis.connection.Message
 import org.springframework.data.redis.connection.MessageListener
 

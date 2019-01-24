@@ -1,8 +1,8 @@
-package com.study.multi.docker.aws.service
+package com.study.ks8.service
 
-import com.study.multi.docker.aws.queue.RedisMessagePublisher
-import com.study.multi.docker.aws.repository.RedisRepository
-import com.study.multi.docker.aws.repository.ValuesRepository
+import com.study.ks8.queue.RedisMessagePublisher
+import com.study.ks8.repository.RedisRepository
+import com.study.ks8.repository.ValuesRepository
 import org.springframework.stereotype.Service
 
 @Service

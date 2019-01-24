@@ -1,6 +1,6 @@
-package com.study.multi.docker.aws.repository
+package com.study.ks8.repository
 
-import com.study.multi.docker.aws.entity.Values
+import com.study.ks8.entity.Values
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

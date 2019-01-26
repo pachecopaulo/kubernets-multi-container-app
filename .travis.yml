@@ -7,34 +7,47 @@ services:
   - docker
 
 before_cache:
+  # We cache the SDK so we don't have to download it again on subsequent builds.
+- $HOME/google-cloud-sdk
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
+env:
+  global:
+    # Do not prompt for user input when using any SDK methods.
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
 before_install:
+  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf "$HOME/google-cloud-sdk"; curl https://sdk.cloud.google.com | bash > /dev/null; fi
   - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null;
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
+  - gcloud version
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project multi-k8s-229621
   - gcloud config set compute/zone europe-west1-b
   - gcloud container clusters get-credentials multi-cluster
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+install: true
+script: true
 
 jobs:
   include:
-  - stage: Frontend Build
+  - stage: Frontend Tests
     script: docker run pachecopaulo/react-test npm test -- --coverage
     before_script:
       - docker build -t pachecopaulo/react-test -f ./client/Dockerfile.dev ./client
   - stage: Lint
     script: ./gradlew lintKotlin
-  - stage: Build and Push Images
-    script:
-      - docker build -t pachecopaulo/multi-client ./client
-      - docker build -t pachecopaulo/multi-server .
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-      - docker push pachecopaulo/multi-client
-      - docker push pachecopaulo/multi-server
+  - stage: Deploy
+    script: skip
+    deploy:
+      provider: script
+      script: bash ./deploy.sh
+      on:
+        branch: master
 cache:
   directories:
   - $HOME/.gradle/caches/

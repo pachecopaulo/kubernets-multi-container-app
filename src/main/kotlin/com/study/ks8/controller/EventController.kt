@@ -2,6 +2,7 @@ package com.study.ks8.controller
 
 import com.study.ks8.service.EventService
 import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
+import org.springframework.http.ResponseEntity.status
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -32,11 +33,11 @@ class EventController(private val eventService: EventService) {
             ?.toIntOrNull()
             ?.let {
                 when (it > 40) {
-                    true -> ResponseEntity.status(UNPROCESSABLE_ENTITY).body("Index too high")
+                    true -> status(UNPROCESSABLE_ENTITY).body("Index too high")
                     else -> {
                         eventService.publishEvent(it.toString())
-                        ResponseEntity.status(OK).build()
+                        status(OK).build()
                     }
                 }
-            } ?: ResponseEntity.status(BAD_REQUEST).body("Invalid request payload")
+            } ?: status(BAD_REQUEST).body("Invalid request payload")
 }

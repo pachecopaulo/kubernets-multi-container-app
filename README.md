@@ -10,6 +10,7 @@ PoC project intended to work with multi container deployment within Kubernets
    * Docker
    * Kubernets
    * NGINX Ingress Controller
+   * Google Cloud
 
 ## Deploying Docker containers to Kubernets 
 

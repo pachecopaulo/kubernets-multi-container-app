@@ -16,6 +16,9 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
+  - gcloud config set project multi-k8s-229621
+  - gcloud config set compute/zone europe-west1-b
+  - gcloud container clusters get-credentials multi-cluster
 
 jobs:
   include:
@@ -25,10 +28,6 @@ jobs:
       - docker build -t pachecopaulo/react-test -f ./client/Dockerfile.dev ./client
   - stage: Lint
     script: ./gradlew lintKotlin
-#  - stage: Backend Test
-#    script: ./gradlew test
-#    before_script:
-#      - docker run --name redis-test-db -p 6379:6379 -d redis
   - stage: Build and Push Images
     script:
       - docker build -t pachecopaulo/multi-client ./client

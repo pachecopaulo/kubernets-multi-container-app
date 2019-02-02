@@ -42,7 +42,7 @@ jobs:
     script: ./gradlew lintKotlin
   - stage: Deploy
     before_deploy:
-      - ./gradlew build
+      - ./gradlew build docker
     deploy:
       provider: script
       script: bash ./deploy.sh

@@ -32,12 +32,16 @@ class EventController(private val eventService: EventService) {
             .firstOrNull()
             ?.toIntOrNull()
             ?.let {
-                when (it > 40) {
-                    true -> status(UNPROCESSABLE_ENTITY).body("Index too high")
+                when (it > MAX_INDEX) {
+                    true -> status(UNPROCESSABLE_ENTITY).body("Index $MAX_INDEX is too high")
                     else -> {
                         eventService.publishEvent(it.toString())
                         status(OK).build()
                     }
                 }
             } ?: status(BAD_REQUEST).body("Invalid request payload")
+
+    companion object {
+        private const val MAX_INDEX = 40
+    }
 }

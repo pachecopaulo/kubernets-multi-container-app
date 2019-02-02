@@ -40,6 +40,8 @@ jobs:
       - docker build -t pachecopaulo/react-test -f ./client/Dockerfile.dev ./client
   - stage: Lint
     script: ./gradlew lintKotlin
+  - stage: Build Jar
+    script: ./gradlew clean build
   - stage: Deploy
     deploy:
       provider: script

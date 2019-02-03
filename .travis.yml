@@ -28,7 +28,6 @@ before_install:
   - gcloud config set compute/zone europe-west1-b
   - gcloud container clusters get-credentials multi-ks8-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - ./gradlew build
 
 install: true
 script: true
@@ -41,6 +40,8 @@ jobs:
       - docker build -t pachecopaulo/react-test -f ./client/Dockerfile.dev ./client
   - stage: Lint
     script: ./gradlew lintKotlin
+  - stage: Build file
+    script: ./gradlew build clean
   - stage: Deploy
     deploy:
       provider: script

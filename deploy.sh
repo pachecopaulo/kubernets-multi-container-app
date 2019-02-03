@@ -1,5 +1,5 @@
-docker build pachecopaulo/multi-client:latest
-docker build pachecopaulo/multi-server:latest
+docker build pachecopaulo/multi-client:latest ./client
+docker build pachecopaulo/multi-server:latest .
 
 docker push pachecopaulo/multi-client:latest
 docker push pachecopaulo/multi-server:latest

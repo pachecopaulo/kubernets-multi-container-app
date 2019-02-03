@@ -1,5 +1,5 @@
-docker build pachecopaulo/multi-client:$SHA ./client
-docker build pachecopaulo/multi-server:$SHA .
+docker build -t pachecopaulo/multi-client:$SHA ./client
+docker build -t pachecopaulo/multi-server:$SHA .
 
 docker push pachecopaulo/multi-client:$SHA
 docker push pachecopaulo/multi-server:$SHA

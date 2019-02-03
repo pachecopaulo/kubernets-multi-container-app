@@ -1,4 +1,3 @@
-./gradlew build clean
 docker build -t pachecopaulo/multi-client:latest -t pachecopaulo/multi-client:$SHA ./client
 docker build -t pachecopaulo/multi-server:latest -t pachecopaulo/multi-server:$SHA .
 

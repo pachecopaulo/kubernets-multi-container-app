@@ -28,6 +28,7 @@ before_install:
   - gcloud config set compute/zone europe-west1-b
   - gcloud container clusters get-credentials multi-ks8-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - ./gradlew build
 
 install: true
 script: true
@@ -41,8 +42,6 @@ jobs:
   - stage: Lint
     script: ./gradlew lintKotlin
   - stage: Deploy
-    before_deploy:
-      - ./gradlew build docker
     deploy:
       provider: script
       script: bash ./deploy.sh

@@ -38,25 +38,13 @@ jobs:
     before_script:
       - docker build -t pachecopaulo/react-test -f ./client/Dockerfile.dev ./client
   - stage: Lint
-    script: ./gradlew lintKotlin
+    script:  ./gradlew lintKotlin clean build
   - stage: Deploy
-    if: branch = master
-    script:
-      - docker build -t pachecopaulo/multi-client:latest -t pachecopaulo/multi-client:$SHA ./client
-      - docker build -t pachecopaulo/multi-server:latest -t pachecopaulo/multi-server:$SHA .
-      - docker push pachecopaulo/multi-client:latest
-      - docker push pachecopaulo/multi-server:latest
-      - docker push pachecopaulo/multi-client:$SHA
-      - docker push pachecopaulo/multi-server:$SHA
-      - kubectl apply -f k8s
-      - kubectl set image deployments/server-deployment server=pachecopaulo/multi-server:$SHA
-      - kubectl set image deployments/client-deployment client=pachecopaulo/multi-client:$SHA
-#  - stage: Deploy
-#    deploy:
-#      provider: script
-#      script: bash ./deploy.sh
-#      on:
-#        branch: master
+    deploy:
+      provider: script
+      script: bash ./deploy.sh
+      on:
+        branch: master
 cache:
   directories:
   - $HOME/.gradle/caches/

@@ -27,6 +27,7 @@ The NGINX will take care of routing the / to the frontend application which is r
 
 ## Updating an existing container 
 * Build and push image to the registery
-* Use imperative kubernets command to update container: `kubectl set image deployment/[yaml deployment file] [deploymentName]=[image]:[tag]` 
+* Use imperative kubernets command to update container: 
+`kubectl set image deployment/[yaml deployment file] [deploymentName]=[image]:[tag]` 
 
   *Full example*: `kubectl set image deployment/server-deployment server=pachecopaulo/multi-server:v1`
